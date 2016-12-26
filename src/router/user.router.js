@@ -4,7 +4,7 @@ var router = express.Router();
 var user_action = require('../action/user.action.js');
 
 router.get('/', (req, res, next) => {
-    res.send('这里应该是登录注册引导页');
+    res.render('user/index');
 });
 
 router.post('/register', (req, res, next) => {
@@ -37,10 +37,30 @@ router.post('/login', (req, res, next) => {
     }
 
     user_action.login(param).then(rs => {
+        res.session.userInfo = rs.content;
         return res.json(rs);
     }).catch(err => {
         return res.json(err);
     });
+});
+
+router.get('/:uid/detail', (req, res, next) => {
+    console.log(req.sessionID);
+    console.log(req.session);
+    var uid = req.params.uid;
+
+    if (!uid) {
+        return res.send('no uid passed.');
+    }
+
+    return res.send('o');
+    // user_action.getInfo({
+    //     uid
+    // }).then(rs => {
+    //     return res.render('user/detail', rs.content);
+    // }).catch(err => {
+    //     return res.json(err);
+    // });
 });
 
 module.exports = router;

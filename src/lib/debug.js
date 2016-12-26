@@ -10,5 +10,9 @@ var debug = module.exports = function(req, res, next) {
     console.log('------');
 
     console.log('req session: ', req.session);
+
+    console.log('------');
+
+    console.log('request url', req.originalUrl);
     next();
 };

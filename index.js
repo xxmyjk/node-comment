@@ -83,7 +83,9 @@ function init() {
         console.log('db connect error, %s', err && err.stack);
         console.log('try start in 3s ......');
 
-        setTimeout(dbAdap.init, 3 * 1000);
+        setTimeout(dbAdap.init.bind(this, {
+            mongodb: 'mongodb://127.0.0.1:27017/test'
+        }), 3 * 1000);
     });
 }
 

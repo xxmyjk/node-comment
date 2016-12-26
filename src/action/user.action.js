@@ -124,5 +124,47 @@ var user_action = module.exports = {
                     content: err.content || err
                 };
             });
+    },
+
+    getInfo: (param, opt) => {
+        if (!param) {
+            return Promise.reject({
+                status: '3200',
+                content: 'no param passed to [user_action.getInfo]'
+            });
+        }
+
+        return dbAdap.getCollection('user')
+            .then(col => {
+                return co(function*() {
+                    var u = yield col.findOne({id: param.uid});
+
+                    if (!u) {
+                        return Promise.reject({
+                            status: '4101',
+                            content: 'find no user by uid: ' + param.uid
+                        });
+                    }
+
+                    var info = {
+                        id: u.id,
+                        nickname: u.nickname,
+                        email: u.email,
+                        mobile: u.mobile,
+                        mtime: u.mtime,
+                        ctime: u.ctime
+                    };
+
+                    return {
+                        status: '0',
+                        content: info
+                    };
+                });
+            }).catch(err => {
+                return {
+                    status: err.status || '2000',
+                    content: err.content || err
+                };
+            });
     }
 };
