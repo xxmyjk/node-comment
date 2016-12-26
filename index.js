@@ -20,6 +20,9 @@ var app = express();
 // 模板引擎设置
 app.set('views', path.join(__dirname, 'src/view'));
 app.set('view engine', 'hbs');
+app.set('view options', {
+    layout: 'layout/default'
+});
 
 // http请求处理
 app.use(bodyParser.json());
@@ -52,7 +55,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('error/error', {
         message: err.message,
         error: err
     });
