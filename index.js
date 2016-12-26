@@ -9,8 +9,8 @@ var dbAdap = require('./src/lib/dbAdap.js');
 var debug = require('./src/lib/debug.js');
 
 // 路由引入
-var index_router = require('./src/router/index.js');
-var user_router = require('./src/router/users.js');
+var index_router = require('./src/router/index.router.js');
+var user_router = require('./src/router/user.router.js');
 
 // 应用声明
 var app = express();
@@ -44,7 +44,7 @@ app.use(debug);
 
 // 业务逻辑路由挂载
 app.use('/', index_router);
-app.use('/users', user_router);
+app.use('/user', user_router);
 
 // 404 & 500 异常处理
 app.use(function(req, res, next) {
