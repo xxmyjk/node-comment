@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./index.js"
+    "start": "./node_modules/.bin/pm2 start ./process.json"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
-    "cookie-parser": "~1.4.3",
+    "co": "^4.6.0",
     "debug": "~2.2.0",
     "express": "~4.13.4",
-    "hbs": "~4.0.0"
+    "express-session": "^1.14.2",
+    "hbs": "~4.0.0",
+    "mongodb": "^2.2.16"
   }
 }
