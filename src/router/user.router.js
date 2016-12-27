@@ -7,7 +7,8 @@ router.get('/', (req, res, next) => {
     if (req.session.isLogin) {
         res.redirect('/user/detail');
     }
-    res.render('user/index');
+
+    res.render('user/index', {msg: req.query.msg || ''});
 });
 
 router.post('/register', (req, res, next) => {
@@ -44,13 +45,16 @@ router.post('/login', (req, res, next) => {
         req.session.isLogin = true;
         return res.redirect('/user/detail');
     }).catch(err => {
-        return res.render('error/error');
+        return res.render('error/error', {
+            message: err.message,
+            error: err
+        });
     });
 });
 
 router.get('/detail', (req, res, next) => {
     if (!req.session.isLogin) {
-        return res.redirect('/user');
+        return res.redirect('/user?msg=LoginNeed');
     }
 
     var userInfo = req.session.userInfo;
@@ -62,6 +66,7 @@ router.get('/logout', (req, res, next) => {
     req.session.isLogin = false;
     req.session.userInfo = null;
 
-    return res.redirect('/user');
+    return res.redirect('/user?msg=LogoutOK');
 });
+
 module.exports = router;

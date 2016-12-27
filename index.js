@@ -11,6 +11,7 @@ var debug = require('./src/lib/debug.js');
 // 路由引入
 var index_router = require('./src/router/index.router.js');
 var user_router = require('./src/router/user.router.js');
+var comment_router = require('./src/router/comment.router.js');
 
 // 应用声明
 var app = express();
@@ -45,6 +46,7 @@ app.use(debug);
 // 业务逻辑路由挂载
 app.use('/', index_router);
 app.use('/user', user_router);
+app.use('/comment', comment_router);
 
 // 404 & 500 异常处理
 app.use(function(req, res, next) {
@@ -96,3 +98,4 @@ module.exports = app;
 
 // TODO:
 // 抽取 session | 端口 | dbconf 等通用配置文件
+// 抽取路径访问控制

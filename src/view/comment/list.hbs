@@ -1,0 +1,21 @@
+<h4>评论列表</h4>
+
+<hr>
+
+<table style="border: 1px dashed" border="1">
+    <tr>
+        <th>from: </th>
+        <th>to: </th>
+        <th>content: </th>
+        <th>ctime: </th>
+    </tr>
+
+    {{#each list as |item| }}
+        <tr>
+            <td>{{item.from}}</td>
+            <td>{{item.to}}</td>
+            <td>{{item.content}}</td>
+            <td>{{item.ctime}}</td>
+        </tr>
+    {{/each}}
+</table>
