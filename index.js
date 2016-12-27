@@ -31,9 +31,9 @@ app.use(session({
     secret: 'A secret string.',
     resave: false,
     saveUninitialized: true,
-    cookie: {
-        secure: true
-    }
+    // cookie: {
+    //     secure: true
+    // }
 }));
 
 // 静态资源文件夹, 暂时使用, 后期并入 nginx/apache 静态资源路径, 这里取消

@@ -4,6 +4,9 @@ var router = express.Router();
 var user_action = require('../action/user.action.js');
 
 router.get('/', (req, res, next) => {
+    if (req.session.isLogin) {
+        res.redirect('/user/detail');
+    }
     res.render('user/index');
 });
 
@@ -37,30 +40,28 @@ router.post('/login', (req, res, next) => {
     }
 
     user_action.login(param).then(rs => {
-        res.session.userInfo = rs.content;
-        return res.json(rs);
+        req.session.userInfo = rs.content;
+        req.session.isLogin = true;
+        return res.redirect('/user/detail');
     }).catch(err => {
-        return res.json(err);
+        return res.render('error/error');
     });
 });
 
-router.get('/:uid/detail', (req, res, next) => {
-    console.log(req.sessionID);
-    console.log(req.session);
-    var uid = req.params.uid;
-
-    if (!uid) {
-        return res.send('no uid passed.');
+router.get('/detail', (req, res, next) => {
+    if (!req.session.isLogin) {
+        return res.redirect('/user');
     }
 
-    return res.send('o');
-    // user_action.getInfo({
-    //     uid
-    // }).then(rs => {
-    //     return res.render('user/detail', rs.content);
-    // }).catch(err => {
-    //     return res.json(err);
-    // });
+    var userInfo = req.session.userInfo;
+
+    return res.render('user/detail', userInfo);
 });
 
+router.get('/logout', (req, res, next) => {
+    req.session.isLogin = false;
+    req.session.userInfo = null;
+
+    return res.redirect('/user');
+});
 module.exports = router;
