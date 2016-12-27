@@ -5,6 +5,14 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <p style="color: red">你猜猜你登录了没:
+        {{#if isLogin}}
+            是
+        {{else}}
+            否
+        {{/if}}
+    </p>
+    <br>
     {{{body}}}
   </body>
 </html>

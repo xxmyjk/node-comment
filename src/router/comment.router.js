@@ -7,7 +7,8 @@ router.get(['/', '/all'], (req, res, next) => {
 
     comment_action.list({}).then(rs => {
         return res.render('comment/list', {
-            list: rs.content
+            list: rs.content,
+            isLogin: req.session.isLogin
         });
     }).catch(err => {
         return res.render('error/error', {
@@ -26,7 +27,9 @@ router.get('/add', (req, res, next) => {
         return res.redirect('/user?msg=NeedLogin');
     }
 
-    return res.render('comment/add');
+    return res.render('comment/add', {
+        isLogin: req.session.isLogin
+    });
 });
 
 router.post('/add', (req, res, next) => {

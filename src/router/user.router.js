@@ -8,7 +8,10 @@ router.get('/', (req, res, next) => {
         res.redirect('/user/detail');
     }
 
-    res.render('user/index', {msg: req.query.msg || ''});
+    res.render('user/index', {
+        isLogin: req.session.isLogin,
+        msg: req.query.msg || ''
+    });
 });
 
 router.post('/register', (req, res, next) => {
@@ -58,6 +61,8 @@ router.get('/detail', (req, res, next) => {
     }
 
     var userInfo = req.session.userInfo;
+
+    userInfo.isLogin = req.session.isLogin;
 
     return res.render('user/detail', userInfo);
 });
