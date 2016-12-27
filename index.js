@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var hbs = require('hbs');
 
 // 自建模块引入
 var dbAdap = require('./src/lib/dbAdap.js');
@@ -23,6 +24,11 @@ app.set('views', path.join(__dirname, 'src/view'));
 app.set('view engine', 'hbs');
 app.set('view options', {
     layout: 'layout/default'
+});
+
+// --- 注册模板引擎helper ---
+hbs.registerHelper('formate', function(timestamp) {
+    return new Date(timestamp).toLocaleString();
 });
 
 // http请求处理
