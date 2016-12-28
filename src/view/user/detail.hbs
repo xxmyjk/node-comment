@@ -1,21 +1,21 @@
 <div class="userinfo-tb">
     <div class="line-head">
         <div class="col"><img class="avatar" src="/images/favicon.ico" alt="avatar"></div>
-        <div class="col">{{nickname}}</div>
+        <div class="col">{{userInfo.nickname}}</div>
         <a class="logout" href="/user/logout">{{!-- 退出 --}}</a>
     </div>
     <div class="tb">
         <div class="line">
             <div class="col col-email"></div>
-            <div class="col">{{email}}</div>
+            <div class="col">{{userInfo.email}}</div>
         </div>
         <div class="line">
             <div class="col col-phone"></div>
-            <div class="col">{{mobile}}</div>
+            <div class="col">{{userInfo.mobile}}</div>
         </div>
         <div class="line">
             <div class="col col-ctime"></div>
-            <div class="col">{{#formate ctime}}{{/formate}}</div>
+            <div class="col">{{#formate userInfo.ctime}}{{/formate}}</div>
         </div>
     </div>
 </div>
