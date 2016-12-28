@@ -10,20 +10,21 @@ var comment_action = module.exports = {
             });
         }
 
-        return dbAdap.getCollection('comment')
-            .then(col => {
-                return col.find({}).sort({ctime: -1}).toArray();
-            }).then(rs => {
-                return {
-                    status: '0',
-                    content: rs
-                };
-            }).catch(err => {
-                return {
-                    status: err.status || '2000',
-                    content: err.content || err
-                };
+        return co(function*() {
+            var col = yield dbAdap.getCollection('comment');
+
+            var rs = yield col.find({}).sort({ctime: -1}).toArray();
+
+            return {
+                status: '0',
+                content: rs
+            };
+        }).catch(err => {
+            return Promise.reject({
+                status: err.status || '2000',
+                content: err.content || err
             });
+        });
     },
 
     add: (param, opt) => {
@@ -41,19 +42,20 @@ var comment_action = module.exports = {
             ctime: Date.now()
         };
 
-        return dbAdap.getCollection('comment')
-            .then(col => {
-                return col.insertOne(comment);
-            }).then(rs => {
-                return {
-                    status: '0',
-                    content: 'ok'
-                };
-            }).catch(err => {
-                return {
-                    status: err.status || '2000',
-                    content: err.content || err
-                };
+        return co(function*() {
+            var col = yield dbAdap.getCollection('comment');
+
+            var rs = yield col.insertOne(comment);
+
+            return {
+                status: '0',
+                content: 'OK'
+            };
+        }).catch((err => {
+            return Promise.reject({
+                status: err.status || '2000',
+                content: err.content || err
             });
+        }));
     }
 };

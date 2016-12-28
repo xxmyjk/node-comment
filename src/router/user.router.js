@@ -48,10 +48,8 @@ router.post('/login', (req, res, next) => {
         req.session.isLogin = true;
         return res.redirect('/user/detail');
     }).catch(err => {
-        return res.render('error/error', {
-            message: err.message,
-            error: err
-        });
+        console.log(err);
+        return res.render('error/error', err);
     });
 });
 
@@ -62,9 +60,10 @@ router.get('/detail', (req, res, next) => {
 
     var userInfo = req.session.userInfo;
 
-    userInfo.isLogin = req.session.isLogin;
-
-    return res.render('user/detail', userInfo);
+    return res.render('user/detail', {
+        userInfo: userInfo,
+        isLogin: req.session.isLogin
+    });
 });
 
 router.get('/logout', (req, res, next) => {

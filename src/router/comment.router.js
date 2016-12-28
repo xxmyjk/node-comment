@@ -11,10 +11,7 @@ router.get(['/', '/all'], (req, res, next) => {
             isLogin: req.session.isLogin
         });
     }).catch(err => {
-        return res.render('error/error', {
-            message: err.message,
-            error: err
-        });
+        return res.render('error/error', err);
     });
 });
 
@@ -53,10 +50,7 @@ router.post('/add', (req, res, next) => {
     comment_action.add(param).then(rs => {
         return res.redirect('/comment');
     }).catch(err => {
-        return res.render('error/error', {
-            message: err.message,
-            error: err
-        });
+        return res.render('error/error', err);
     });
 });
 

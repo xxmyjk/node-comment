@@ -63,10 +63,8 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error/error', {
-        message: err.message,
-        error: err
-    });
+    err.content = err.content || err.message;
+    res.render('error/error', err);
 });
 
 // 服务初始化函数
