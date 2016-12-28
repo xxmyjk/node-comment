@@ -103,8 +103,8 @@ var user_action = module.exports = {
                             nickname: u.nickname,
                             email: u.email,
                             mobile: u.mobile,
-                            mtime: u.mtime,
-                            ctime: u.ctime
+                            mtime: u.mtime, // modifyTime
+                            ctime: u.ctime // createTime
                         };
 
                         return {

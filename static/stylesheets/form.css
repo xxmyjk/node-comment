@@ -1,0 +1,54 @@
+.index-login {
+	max-width: 750px;
+	margin: 0 auto;
+	padding-bottom: 1px;
+	background-color: #fff;
+}
+.index-login > .login-form {
+	/*display: none;*/
+}
+.index-login > .login-form, 
+.index-login > .register-form {
+	width: 92%;
+	margin: 0 auto;	
+}
+.login-form > .line, 
+.register-form > .line {
+	width: 100%;
+	padding-top: 20px;
+	color: #393939;
+	display: table;
+}
+.line > label,
+.line > input {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 15px;
+	height: 40px;
+}
+.line > label {
+	width: 4rem;
+}
+.line > input {
+	width: 100%;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	padding: 0 10px;
+	border-bottom: 1px solid #dedede;
+}
+.line > input:focus {
+	border-color: #5c90d2;
+}
+.link {
+	float: right;
+	padding-top: 10px;
+	font-size: 14px;
+	color: #5c90d2
+}
+.link > a {
+	color: #5c90d2;
+}
+.link > a:active {
+	text-decoration: underline;
+}
