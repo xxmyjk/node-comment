@@ -1,0 +1,30 @@
+body{
+	font-size: 62.5%;
+	font-family: "Microsoft YaHei";
+	background-color: #f9f9f9;
+}
+#root {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+button[type="submit"] {
+	outline: none;
+	border: none;
+	width: 80%;
+	height: 40px;
+	display: block;
+	margin: 45px auto 30px;
+	background-color: #5c90d2;
+	font-size: 15px;
+	color: #fff;
+	font-family: 'Microsoft YaHei';
+	border-radius: 2px;
+}
