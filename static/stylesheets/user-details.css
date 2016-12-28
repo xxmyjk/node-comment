@@ -1,0 +1,100 @@
+.userinfo-tb {
+	max-width: 750px;
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+.userinfo-tb .tb {
+	width: 100%;
+	background-color: #fff;
+}
+.userinfo-tb .line {
+	width: 92%;
+	padding: 0 4%;
+	height: 56px;
+	display: table;
+	border-bottom: 1px solid #dedede;
+}
+.userinfo-tb > .line-head {
+	width: 100%;
+	margin-bottom: 20px;
+	height: 70px;
+	background-color: #fff;
+	display: table;
+	position: relative;
+}
+.userinfo-tb > .line-head > a.logout {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 20px;
+	right: 4%;
+	background: url(../images/logout.png) no-repeat center center;
+	background-size: 26px;
+}
+.userinfo-tb .line:active,
+.userinfo-tb > .line-head:active {
+	background-color: #f5f5f5;
+}
+
+.userinfo-tb > .line-head > .col {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 16px;
+}
+.userinfo-tb > .line-head > .col:first-child {
+	width: 4rem;
+	padding-left: 4%;
+}
+.userinfo-tb > .line-head img {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+}
+.userinfo-tb .line .col {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 14px;
+}
+.userinfo-tb .line .col:first-child {
+	width: 3rem;
+}
+.userinfo-tb .tb .col-email {
+	background: url(../images/email.png) no-repeat left center;
+	background-size: 24px;
+}
+.userinfo-tb .tb .col-phone {
+	background: url(../images/phone.png) no-repeat left center;
+	background-size: 24px;
+}
+.userinfo-tb .tb .col-ctime {
+	background: url(../images/ctime.png) no-repeat left center;
+	background-size: 24px;
+}
+
+/*按钮组*/
+.btn-group {
+	width: 100%;
+	height: 50px;
+	display: table;
+	margin-top: 30px;
+	background-color: #3f5259;
+}
+.btn-group > a {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	width: 33.333333%;
+	color: #fff;
+	font-size: 14px;
+	position: relative;
+}
+.btn-group > a:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 60%;
+	top: 20%;
+	left: 100%;
+	border-radius: 1px;
+	background-color: #f5f5f5;
+}

@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
+// 注册
 router.post('/register', (req, res, next) => {
     var param = {
         nickname: req.body.nickname,
@@ -33,6 +34,7 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+// 登录
 router.post('/login', (req, res, next) => {
     var param = {
         username: req.body.username,
@@ -53,6 +55,7 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+// 详情
 router.get('/detail', (req, res, next) => {
     if (!req.session.isLogin) {
         return res.redirect('/user?msg=LoginNeed');
@@ -66,6 +69,7 @@ router.get('/detail', (req, res, next) => {
     });
 });
 
+// 登出
 router.get('/logout', (req, res, next) => {
     req.session.isLogin = false;
     req.session.userInfo = null;
