@@ -29,7 +29,7 @@ module.exports = {
             ref  : 'origin/master',
             repo : 'git@github.com:xxmyjk/node-comment.git',
             path : '/mnt/deploy_root/producction',
-            'post-deploy' : 'source ~/.zshrc && npm install && pm2 startOrRestart ecosystem.json --env production'
+            'post-deploy' : 'source ~/.zshrc && npm install && pm2 startOrRestart ecosystem.config.js --env production'
         },
         dev : {
             user : 'work',
@@ -37,7 +37,7 @@ module.exports = {
             ref  : 'origin/master',
             repo : 'git@github.com:xxmyjk/node-comment.git',
             path : '/mnt/deploy_root/development',
-            'post-deploy' : 'source ~/.zshrc && npm install && pm2 startOrRestart ecosystem.json --env dev',
+            'post-deploy' : 'source ~/.zshrc && npm install && pm2 startOrRestart ecosystem.config.js --env dev',
             env  : {
                 NODE_ENV: 'dev'
             }
