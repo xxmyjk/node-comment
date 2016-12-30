@@ -37,7 +37,7 @@ module.exports = {
             ref  : 'origin/master',
             repo : 'git@github.com:xxmyjk/node-comment.git',
             path : '/mnt/deploy_root/development',
-            'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.json --env dev',
+            'post-deploy' : '/home/work/.nvm/versions/node/v6.9.1/bin/npm install && /home/work/.nvm/versions/node/v6.9.1/bin/pm2 startOrRestart ecosystem.json --env production',
             env  : {
                 NODE_ENV: 'dev'
             }
